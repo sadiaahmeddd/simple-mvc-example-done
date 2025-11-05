@@ -14,5 +14,36 @@
   <a href="/">Home</a>
   <a href="/page1">Page 1</a>
   <a href="/page2">Page 2</a>
+
+
+
+  <hr>
+<h2>Dog Manager</h2>
+
+<!-- Create Dog Form -->
+<form method="POST" action="/dogs/create">
+  <label for="name">Name:</label>
+  <input id="name" name="name" required>
+
+  <label for="breed">Breed:</label>
+  <input id="breed" name="breed" required>
+
+  <label for="age">Age:</label>
+  <input id="age" name="age" type="number" required>
+
+  <button type="submit">Add Dog</button>
+</form>
+
+<hr>
+
+<!-- Increase Dog Age Form -->
+<form method="POST" action="/dogs/increment">
+  <label for="nameAge">Name:</label>
+  <input id="nameAge" name="name" required>
+  <button type="submit">Increase Age</button>
+</form>
+
+<a href="/page4">View All Dogs →</a>
+
 </body>
 </html>

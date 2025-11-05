@@ -35,4 +35,23 @@ const router = (app) => {
 };
 
 // export the router function
+
+
+
+//Dog 
+
+// server/router.js
+const controllers = require('./controllers');
+
+// Dog routes
+app.post('/dogs/create', controllers.Dog.createDog);
+app.post('/dogs/increment', controllers.Dog.incrementAgeByName);
+
+// Page 4 – list all dogs
+app.get('/page4', controllers.Dog.listDogs);
+
+
+
+
+
 module.exports = router;
