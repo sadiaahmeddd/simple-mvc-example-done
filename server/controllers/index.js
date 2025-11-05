@@ -295,3 +295,5 @@ module.exports = {
   searchName,
   notFound,
 };
+
+module.exports.Dog = require('./Dog');

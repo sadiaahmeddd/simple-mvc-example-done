@@ -3,23 +3,28 @@ const models = require('../models');
 const { Dog } = models;
 
 const createDog = async (req, res) => {
-  let { name, breed, age } = req.body;
-  if (!name || !breed || age === undefined || age === '') {
-    return res.redirect('/page3?err=Please provide name, breed, and age.');
-  }
-  name = String(name).trim();
-  breed = String(breed).trim();
-  age = Number(age);
-  if (!Number.isFinite(age) || age < 0) {
-    return res.redirect('/page3?err=Age must be a non-negative number.');
-  }
-  try {
-    await Dog.create({ name, breed, age });
-    return res.redirect('/page3?msg=Dog created successfully.');
-  } catch (e) {
-    return res.redirect('/page3?err=Could not create dog.');
-  }
-};
+    console.log('createDog body:', req.body); // <--- add this
+    let { name, breed, age } = req.body;
+  
+    if (!name || !breed || age === undefined || age === '') {
+      return res.redirect('/page3?err=Please provide name, breed, and age.');
+    }
+  
+    name = String(name).trim();
+    breed = String(breed).trim();
+    age = Number(age);
+    if (!Number.isFinite(age) || age < 0) {
+      return res.redirect('/page3?err=Age must be a non-negative number.');
+    }
+  
+    try {
+      await Dog.create({ name, breed, age });
+      return res.redirect('/page3?msg=Dog created successfully.');
+    } catch (e) {
+      return res.redirect('/page3?err=Could not create dog.');
+    }
+  };
+  
 
 const incrementAgeByName = async (req, res) => {
   const name = String(req.body.name || '').trim();
@@ -45,6 +50,13 @@ const listDogs = async (req, res) => {
     return res.render('page4', { dogs: [], err: 'Failed to load dogs.' });
   }
 };
+
+// Function to render the untemplated page3.
+const hostPage3 = (req, res) => {
+    const { msg, err } = req.query || {};
+    res.render('page3', { msg, err });
+  };
+  
 
 module.exports = { createDog, incrementAgeByName, listDogs };
 module.exports.Dog = require('./Dog');
