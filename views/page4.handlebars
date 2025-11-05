@@ -1,9 +1,4 @@
 <h1>All Dogs</h1>
-
-{{#if err}}
-  <p style="color: red">{{err}}</p>
-{{/if}}
-
 <ul>
   {{#each dogs}}
     <li><strong>{{this.name}}</strong> — {{this.breed}} — age {{this.age}}</li>
@@ -13,5 +8,4 @@
     <li>No dogs yet.</li>
   {{/dogs}}
 </ul>
-
-<p><a href="/page3">← Back to Page 3</a></p>
+<a href="/page3">← Back to Page 3</a>
